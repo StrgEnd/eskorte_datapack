@@ -1,10 +1,7 @@
-# Angreifer gewinnen
-tellraw @a [{"text":"=== ANGREIFER GEWINNEN! ===","color":"red","bold":true}]
-tellraw @a {"text":"Die Eskorte hat ihr Ziel erreicht!","color":"green"}
-title @a title {"text":"SIEG!","color":"red","bold":true}
-title @a subtitle {"text":"Angreifer haben gewonnen","color":"gold"}
-playsound minecraft:ui.toast.challenge_complete master @a ~ ~ ~ 1 1
-
-# Spiel beenden
-scoreboard players set #game_active eskorte_setup 0
-scoreboard players set #timer eskorte_timer 0
+# Attackers gewinnen
+title @a title {"text":"ATTACKERS GEWINNEN!","color":"red","bold":true}
+title @a subtitle {"text":"Die Lore hat das Ziel erreicht!","color":"gold"}
+tellraw @a {"text":"=== ATTACKERS HABEN GEWONNEN! ===","color":"red","bold":true}
+execute at @e[type=armor_stand,tag=escort_end] run summon firework_rocket ~ ~2 ~ {LifeTime:30,FireworksItem:{id:"minecraft:firework_rocket",tag:{Fireworks:{Explosions:[{Type:1,Colors:[I;16711680]}]}}}}
+playsound entity.firework_rocket.large_blast master @a ~ ~ ~ 1 1
+function eskorte:game/stop

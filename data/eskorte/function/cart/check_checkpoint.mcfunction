@@ -1,0 +1,2 @@
+# Checkpoint überprüfen
+execute as @e[type=armor_stand,tag=escort_checkpoint] at @s if entity @e[type=minecart,tag=escort_cart,distance=..2] unless score @e[type=minecart,tag=escort_cart,limit=1] last_checkpoint >= @s checkpoint_id run function eskorte:cart/checkpoint_reached

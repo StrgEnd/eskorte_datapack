@@ -1,16 +1,35 @@
-# Initialisierung beim Laden des Datapacks
-tellraw @a {"text":"Eskorte Datapack geladen!","color":"green"}
-scoreboard objectives add eskorte_timer dummy
-scoreboard objectives add eskorte_setup dummy
-scoreboard objectives add eskorte_checkpoint dummy
-scoreboard objectives add eskorte_distance dummy
+# Escort Gamemode Load Function
+tellraw @a {"text":"[Escort] Datapack geladen! Version 1.0","color":"green"}
+
+# Scoreboards erstellen
+scoreboard objectives add escort_timer dummy "Escort Timer"
+scoreboard objectives add escort_setup dummy "Setup Mode"
+scoreboard objectives add waypoint_id dummy "Waypoint ID"
+scoreboard objectives add checkpoint_id dummy "Checkpoint ID"
+scoreboard objectives add last_checkpoint dummy "Last Checkpoint"
+scoreboard objectives add attackers_nearby dummy "Attackers Nearby"
+scoreboard objectives add defenders_nearby dummy "Defenders Nearby"
+scoreboard objectives add cart_speed dummy "Cart Speed"
+scoreboard objectives add game_state dummy "Game State"
+scoreboard objectives add temp dummy "Temporary"
 
 # Teams erstellen
-function eskorte:setup/create_teams
+team add attackers "Attackers"
+team modify attackers color red
+team modify attackers prefix {"text":"[ATK] ","color":"red"}
 
-# Info
-tellraw @a {"text":"Für das Setup: ","color":"gray"},{"text":"/function eskorte:setup/init","color":"green","clickEvent":{"action":"suggest_command","value":"/function eskorte:setup/init"}}
+team add defenders "Defenders" 
+team modify defenders color blue
+team modify defenders prefix {"text":"[DEF] ","color":"blue"}
 
-# Marker für Spielstatus
-scoreboard players set #game_active eskorte_setup 0
-scoreboard players set #timer eskorte_timer 0
+# Bossbar erstellen
+bossbar add escort:timer {"text":"Escort Timer","color":"yellow"}
+bossbar set escort:timer color yellow
+bossbar set escort:timer style progress
+bossbar set escort:timer max 6000
+
+# Globale Variablen
+scoreboard players set #game_time escort_timer 6000
+scoreboard players set #game_state game_state 0
+scoreboard players set #max_waypoints waypoint_id 0
+scoreboard players set #cart_base_speed cart_speed 20
