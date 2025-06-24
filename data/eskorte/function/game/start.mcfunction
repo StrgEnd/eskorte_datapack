@@ -3,8 +3,8 @@ scoreboard players set #game_state game_state 1
 scoreboard players set #game_time escort_timer 6000
 
 # Bossbar aktivieren
-bossbar set escort:timer players @a
-execute store result bossbar escort:timer value run scoreboard players get #game_time escort_timer
+bossbar set minecraft:escort_timer players @a
+execute store result bossbar minecraft:escort_timer value run scoreboard players get #game_time escort_timer
 
 # Minecart spawnen
 execute at @e[type=armor_stand,tag=escort_start] run summon minecart ~ ~ ~ {Tags:["escort_cart"],Invulnerable:1b,NoGravity:1b}

@@ -23,13 +23,14 @@ team modify defenders color blue
 team modify defenders prefix {"text":"[DEF] ","color":"blue"}
 
 # Bossbar erstellen
-bossbar add escort:timer {"text":"Escort Timer","color":"yellow"}
-bossbar set escort:timer color yellow
-bossbar set escort:timer style progress
-bossbar set escort:timer max 6000
+bossbar add minecraft:escort_timer {"text":"Escort Timer","color":"gold"}
+bossbar set minecraft:escort_timer color yellow
+bossbar set minecraft:escort_timer style progress
+bossbar set minecraft:escort_timer max 3000
+bossbar set minecraft:escort_timer players @a
 
 # Globale Variablen
-scoreboard players set #game_time escort_timer 6000
+scoreboard players set #game_time escort_timer 3000
 scoreboard players set #game_state game_state 0
 scoreboard players set #max_waypoints waypoint_id 0
-scoreboard players set #cart_base_speed cart_speed 20
+scoreboard players set #cart_base_speed cart_speed 10

@@ -12,7 +12,7 @@ kill @e[type=armor_stand,tag=escort_start]
 kill @e[type=armor_stand,tag=escort_end]
 
 # Scoreboards zurücksetzen
-scoreboard players set #game_time escort_timer 6000
+scoreboard players set #game_time escort_timer 3000
 scoreboard players set #max_waypoints waypoint_id 0
 scoreboard players reset @a escort_timer
 scoreboard players reset @a escort_setup

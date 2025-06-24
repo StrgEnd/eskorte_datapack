@@ -1,8 +1,10 @@
 # Hauptlogik für das Minecart
 
-# Physik-Immunität ZUERST (verhindert Pushing)
+# WICHTIG: Physik-Immunität NACH der Bewegung setzen
 data modify entity @s Invulnerable set value 1b
 data modify entity @s NoGravity set value 1b
+data modify entity @s PushX set value 0.0d
+data modify entity @s PushZ set value 0.0d
 
 # Spieler in der Nähe zählen
 execute store result score @s attackers_nearby run execute if entity @a[team=attackers,distance=..6]

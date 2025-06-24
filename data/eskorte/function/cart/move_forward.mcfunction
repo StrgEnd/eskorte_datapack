@@ -1,5 +1,5 @@
 # Lore vorwärts bewegen
-scoreboard players set @s cart_speed 20
+scoreboard players set @s cart_speed 10
 
 # Nächsten Waypoint finden
 execute store result score #current_wp temp run scoreboard players get @s waypoint_id
