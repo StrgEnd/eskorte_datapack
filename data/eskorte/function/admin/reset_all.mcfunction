@@ -5,7 +5,7 @@ scoreboard players set #game_state game_state 0
 
 # Alle Escort-Entities entfernen
 kill @e[type=minecart,tag=escort_cart]
-kill @e[type=zombie,tag=escort_payload]
+kill @e[type=villager,tag=escort_payload]
 kill @e[type=armor_stand,tag=escort_waypoint]
 kill @e[type=armor_stand,tag=escort_checkpoint]
 kill @e[type=armor_stand,tag=escort_start]
@@ -25,8 +25,8 @@ scoreboard players reset @a cart_speed
 scoreboard players reset @a temp
 
 # Teams leeren (Spieler bleiben in Teams aber können neu beitreten)
-# team empty attackers
-# team empty defenders
+team empty attackers
+team empty defenders
 
 # Nachricht
 tellraw @a {"text":"=== ESCORT SYSTEM KOMPLETT ZURÜCKGESETZT ===","color":"red","bold":true}
