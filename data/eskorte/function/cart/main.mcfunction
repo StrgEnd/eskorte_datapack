@@ -22,4 +22,4 @@ execute unless score @s attackers_nearby matches 1.. unless score @s defenders_n
 function eskorte:cart/check_checkpoint
 
 # Waypoint Navigation
-function eskorte:cart/navigate
+# function eskorte:cart/navigate

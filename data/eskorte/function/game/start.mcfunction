@@ -1,6 +1,13 @@
+# Bossbar erstellen
+bossbar add minecraft:escort_timer {"text":"Escort Timer","color":"gold"}
+bossbar set minecraft:escort_timer color yellow
+bossbar set minecraft:escort_timer style progress
+bossbar set minecraft:escort_timer max 3000
+bossbar set minecraft:escort_timer players @a
+
 # Spiel starten
 scoreboard players set #game_state game_state 1
-scoreboard players set #game_time escort_timer 6000
+scoreboard players set #game_time escort_timer 3000
 
 # Bossbar aktivieren
 bossbar set minecraft:escort_timer players @a
