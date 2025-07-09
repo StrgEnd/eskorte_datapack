@@ -15,6 +15,10 @@ title @a actionbar ["",{"text":"Attackers: ","color":"red"},{"score":{"name":"#a
 # Cart Logic
 execute as @e[type=minecart,tag=escort_cart] at @s run function eskorte:cart/main
 
+# Villager dreht sich zu Spieler
+execute as @e[type=villager,tag=escort_payload] at @s run tp @s ~ ~ ~ facing entity @p[distance=..6]
+ride @e[type=villager,tag=escort_payload,limit=1] mount @e[type=minecart,tag=escort_cart,limit=1]
+
 # Win Conditions
 execute if score #game_time escort_timer matches 0 run function eskorte:game/defenders_win
 execute as @e[type=minecart,tag=escort_cart] at @s if entity @e[type=armor_stand,tag=escort_end,distance=..1] run function eskorte:game/attackers_win

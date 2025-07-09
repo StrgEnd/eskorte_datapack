@@ -3,6 +3,9 @@
 # Spiel stoppen
 scoreboard players set #game_state game_state 0
 
+# Timer entfernen
+bossbar remove eskorte:timer
+
 # Alle Escort-Entities entfernen
 kill @e[type=minecart,tag=escort_cart]
 kill @e[type=villager,tag=escort_payload]
@@ -35,4 +38,3 @@ tellraw @a {"text":"Setup kann neu gestartet werden mit: /function escort:setup/
 
 # Feuerwerk-Effekt
 execute as @a at @s run summon firework_rocket ~ ~ ~ {LifeTime:20,FireworksItem:{id:"firework_rocket",count:1,components:{"minecraft:fireworks":{explosions:[{shape:"burst",colors:[I;16711680,255]}]}}}}
-
