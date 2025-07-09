@@ -1,4 +1,4 @@
-# Rechtsklick mit Escort Rail erkennen - mit Sneak-Kontrolle
+# Sneak mit Escort Rail erkennen
 execute if predicate eskorte:is_sneaking run scoreboard players add @s temp 1
 execute unless predicate eskorte:is_sneaking run scoreboard players set @s temp 0
 

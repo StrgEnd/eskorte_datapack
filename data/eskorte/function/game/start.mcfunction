@@ -15,7 +15,7 @@ execute store result bossbar minecraft:escort_timer value run scoreboard players
 
 # Minecart spawnen
 execute at @e[type=armor_stand,tag=escort_start] run summon minecart ~ ~ ~ {Tags:["escort_cart"],Invulnerable:1b,NoGravity:1b}
-execute at @e[type=armor_stand,tag=escort_start] run summon villager ~ ~1 ~ {Tags:["escort_payload"],PersistenceRequired:1b,Silent:1b,NoAI:1b}
+execute at @e[type=armor_stand,tag=escort_start] run summon villager ~ ~1 ~ {Tags:["escort_payload"],PersistenceRequired:1b,Silent:1b,NoAI:1b,Invulnerable:1b,Offers:{Recipes:[]}}
 execute as @e[type=minecart,tag=escort_cart] run scoreboard players set @s waypoint_id 1
 execute as @e[type=minecart,tag=escort_cart] run scoreboard players set @s last_checkpoint 0
 
