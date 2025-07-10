@@ -4,7 +4,7 @@
 scoreboard players set #game_state game_state 0
 
 # Timer entfernen
-bossbar remove eskorte:timer
+bossbar remove minecraft:escort_timer
 
 # Alle Escort-Entities entfernen
 kill @e[type=minecart,tag=escort_cart]

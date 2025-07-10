@@ -1,0 +1,12 @@
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~4 ~ ~ 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~3.46 ~ ~2 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~2 ~ ~3.46 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~ ~ ~4 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~-2 ~ ~3.46 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~-3.46 ~ ~2 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~-4 ~ ~ 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~-3.46 ~ ~-2 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~-2 ~ ~-3.46 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~ ~ ~-4 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~2 ~ ~-3.46 0 0 0 0 1 force
+particle minecraft:dust{color:[0.8,0.8,0.8],scale:0.5} ~3.46 ~ ~-2 0 0 0 0 1 force
