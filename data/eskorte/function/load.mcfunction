@@ -13,6 +13,15 @@ scoreboard objectives add cart_speed dummy "Cart Speed"
 scoreboard objectives add game_state dummy "Game State"
 scoreboard objectives add temp dummy "Temporary"
 
+scoreboard objectives add kills playerKillCount
+scoreboard objectives add deaths deathCount
+scoreboard objectives add kd dummy
+scoreboard objectives add kd_whole dummy
+scoreboard objectives add kd_decimal dummy
+
+scoreboard players set #100 temp 100
+scoreboard players set #1 temp 1
+
 # Teams erstellen
 team add attackers "Attackers"
 team modify attackers color red
