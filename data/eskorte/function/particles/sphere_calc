@@ -1,0 +1,155 @@
+import math
+
+def generate_circle_particles(radius, num_particles=12):
+
+    # Generiert Partikel-Positionen für einen Kreis mit gegebenem Radius
+    
+    # Args:
+    #     radius: Radius des Kreises
+    #     num_particles: Anzahl der Partikel (standardmäßig 12)
+    
+    # Returns:
+    #     Liste von (x, z) Koordinaten für die Partikel
+
+    particles = []
+    
+    for i in range(num_particles):
+        # Winkel für gleichmäßige Verteilung um den Kreis
+        angle = (2 * math.pi * i) / num_particles
+        
+        # Berechnung der x und z Koordinaten
+        x = radius * math.cos(angle)
+        z = radius * math.sin(angle)
+        
+        particles.append((x, z))
+    
+    return particles
+
+def generate_sphere_layers():
+    # Generiert die verschiedenen Kreise für eine 3D-Kugel mit Radius 6
+    # Basiert auf der Formel: x² + y² + z² = r²
+    # Für jeden y-Wert berechnen wir den entsprechenden Radius in der xz-Ebene
+    
+    sphere_radius = 6.0
+    layers = []
+    
+    # Definiere die y-Positionen und berechne die entsprechenden Radien
+    y_positions = [
+        6.0,    # Spitze
+        5.5,    # circle_radius_2
+        5.0,    # circle_radius_3  
+        4.5,    # circle_radius_4
+        4.0,    # circle_radius_4_5
+        3.5,    # circle_radius_5
+        3.0,    # circle_radius_5_2
+        2.5,    # circle_radius_5_5
+        2.0,    # circle_radius_5_7
+        1.5,    # circle_radius_5_8
+        1.0,    # circle_radius_5_9
+        0.5,    # circle_radius_6
+        0.0     # circle_radius_6 (Äquator)
+    ]
+    
+    for y in y_positions:
+        # Berechne den Radius in der xz-Ebene für diese Höhe
+        # Aus der Kugelformel: x² + y² + z² = r²
+        # Folgt: x² + z² = r² - y²
+        # Also: radius_xz = sqrt(r² - y²)
+        
+        if y <= sphere_radius:
+            radius_xz = math.sqrt(sphere_radius**2 - y**2)
+            layers.append((y, radius_xz))
+    
+    return layers
+
+def generate_mcfunction_files():
+    # Generiert die .mcfunction Dateien für Minecraft
+
+    
+    # Mapping von Radien zu Dateinamen
+    radius_to_filename = {
+        6.0: "circle_radius_6",
+        5.9: "circle_radius_5_9", 
+        5.8: "circle_radius_5_8",
+        5.7: "circle_radius_5_7",
+        5.5: "circle_radius_5_5",
+        5.2: "circle_radius_5_2",
+        5.0: "circle_radius_5",
+        4.5: "circle_radius_4_5",
+        4.0: "circle_radius_4",
+        3.0: "circle_radius_3",
+        2.0: "circle_radius_2"
+    }
+    
+    # Generiere Dateien für jeden Radius
+    for radius, filename in radius_to_filename.items():
+        particles = generate_circle_particles(radius, 12)
+        
+        print(f"# {filename}.mcfunction")
+        for x, z in particles:
+            print(f"particle minecraft:dust{{color:[0.8,0.8,0.8],scale:0.5}} ~{x:.3f} ~ ~{z:.3f} 0 0 0 0 1 force")
+        print()
+
+def calculate_sphere_radii():
+    # Berechnet die exakten Radien für eine perfekte Kugel
+
+    sphere_radius = 6.0
+    
+    # Y-Positionen für die verschiedenen Ebenen
+    y_positions = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0]
+    
+    print("Y-Position -> XZ-Radius für Kugel mit Radius 6:")
+    print("=" * 50)
+    
+    for y in y_positions:
+        if y <= sphere_radius:
+            radius_xz = math.sqrt(sphere_radius**2 - y**2)
+            print(f"Y = {y:3.1f} -> XZ-Radius = {radius_xz:.3f}")
+    
+    print("\nEntsprechende Dateinamen:")
+    print("=" * 30)
+    
+    # Mapping basierend auf berechneten Radien
+    filename_mapping = {
+        0.0: ("circle_radius_6", 6.000),
+        0.5: ("circle_radius_6", 5.979),
+        1.0: ("circle_radius_5_9", 5.916),
+        1.5: ("circle_radius_5_8", 5.809),
+        2.0: ("circle_radius_5_7", 5.657),
+        2.5: ("circle_radius_5_5", 5.459),
+        3.0: ("circle_radius_5_2", 5.196),
+        3.5: ("circle_radius_5", 4.873),
+        4.0: ("circle_radius_4_5", 4.472),
+        4.5: ("circle_radius_4", 3.969),
+        5.0: ("circle_radius_3", 3.317),
+        5.5: ("circle_radius_2", 2.449),
+        6.0: ("circle_radius_0", 0.000)
+    }
+    
+    for y, (filename, calculated_radius) in filename_mapping.items():
+        print(f"Y = {y:3.1f} -> {filename} (Radius: {calculated_radius:.3f})")
+
+# Hauptfunktion
+if __name__ == "__main__":
+    print("MINECRAFT SPHERE PARTICLE GENERATOR")
+    print("=" * 50)
+    
+    # Zeige die Berechnungslogik
+    calculate_sphere_radii()
+    
+    print("\n" + "=" * 50)
+    print("GENERIERTE .MCFUNCTION DATEIEN:")
+    print("=" * 50)
+    
+    # Generiere die Minecraft-Dateien
+    generate_mcfunction_files()
+    
+    print("=" * 50)
+
+    print(f"\nFormel für Kugelradius:")
+    print(f"Für eine Kugel mit Radius R=6 und Y-Position y:")
+    print(f"XZ-Radius = sqrt(R² - y²) = sqrt(36 - y²)")
+    print(f"\nFür gleichmäßige Verteilung von 12 Partikeln:")
+    print(f"Winkel_i = (2π * i) / 12 = (360° * i) / 12")
+    print(f"X_i = radius * cos(Winkel_i)")
+    print(f"Z_i = radius * sin(Winkel_i)")

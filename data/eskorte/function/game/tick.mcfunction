@@ -15,6 +15,9 @@ title @a actionbar ["",{"text":"Attackers: ","color":"red"},{"score":{"name":"#a
 # Cart Logic
 execute as @e[type=minecart,tag=escort_cart] at @s run function eskorte:cart/main
 
+# Cart particles
+execute as @e[type=minecart,tag=escort_cart] at @s run function eskorte:particles/main
+
 # Villager dreht sich zu Spieler
 execute as @e[type=villager,tag=escort_payload] at @s run tp @s ~ ~ ~ facing entity @p[distance=..6]
 ride @e[type=villager,tag=escort_payload,limit=1] mount @e[type=minecart,tag=escort_cart,limit=1]

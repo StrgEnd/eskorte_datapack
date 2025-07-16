@@ -4,6 +4,6 @@ kill @e[type=minecart,tag=escort_cart]
 kill @e[type=villager,tag=escort_payload]
 
 # Bossbar verstecken
-bossbar remove eskorte:timer
+bossbar remove minecraft:escort_timer
 
 tellraw @a {"text":"Escort-Spiel beendet!","color":"red"}
